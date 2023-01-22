@@ -1,0 +1,84 @@
+.signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.signUpWrapper {
+    height: fit-content;
+    width: 100%;
+    max-width: 700px;
+    border: 2px solid rgba(153, 255, 0, 0.514);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.signUpWrapper h2 {
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: rgb(129, 214, 0);
+}
+
+.twoInputs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.inputField {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.inputField label {
+    margin-bottom: .2rem;
+    cursor: pointer;
+    color: rgb(129, 214, 0);
+}
+
+.inputField label span {
+    color: red;
+}
+
+.inputField input:not(input[type=radio]) {
+    width: 100%;
+    min-width: 250px;
+    padding: .5rem;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid black;
+}
+
+.inputField input:not(input[type=radio]):focus {
+    border-bottom: 2px solid red;
+}
+
+.inputField input:not(input[type=radio]):valid {
+    border-bottom: 2px solid rgb(129, 214, 0);
+}
+
+.genderOptions {
+    display: flex;
+    gap: 2rem;
+    margin-top: .5rem;
+}
+
+.genderOption label {
+    margin-right: .5rem;
+}
+
+.btn {
+    width: 100%;
+    padding: 1rem 2rem;
+    margin-top: 2rem;
+    border: none;
+    outline: none;
+    background-color: rgb(129, 214, 0);
+    color: white;
+}
