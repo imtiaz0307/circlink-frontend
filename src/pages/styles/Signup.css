@@ -36,6 +36,7 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+    position: relative;
 }
 
 .inputField label {
@@ -91,4 +92,19 @@
     color: #831de2;
     cursor: pointer;
     border-radius: 10px;
+}
+
+
+/* errors */
+.error {
+    background-color: white;
+    font-size: .9rem;
+    padding: .5rem;
+    border-radius: 10px;
+    width: 100%;
+    position: absolute;
+    bottom: -35px;
+    z-index: 10;
+    pointer-events: none;
+    transition: .5s;
 }
