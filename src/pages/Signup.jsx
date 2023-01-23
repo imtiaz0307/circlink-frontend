@@ -1,14 +1,15 @@
 import './styles/Signup.css'
 import { useRef, useState, useContext } from 'react'
 import { AppContext } from '../AppState/AppContext'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
+import { useEffect } from 'react'
 
 const Signup = () => {
     // constants
     const navigate = useNavigate()
 
     // app context
-    const { url, setIsAuthenticated } = useContext(AppContext)
+    const { url, isAuthenticated, setIsAuthenticated } = useContext(AppContext)
 
     // states
     const [passwordError, setPasswordError] = useState(false)
@@ -74,6 +75,11 @@ const Signup = () => {
         }
     }
 
+    // navigating to homepage if already logged in
+    useEffect(() => {
+        isAuthenticated && navigate('/')
+    }, [])
+
     return (
         <div className='signup'>
             <div className="signUpWrapper">
@@ -133,6 +139,9 @@ const Signup = () => {
                     </div>
                     <button type="submit" className='btn'>Sign Up</button>
                 </form>
+                <h6>
+                    <Link to='/login'>Already have an account?</Link>
+                </h6>
             </div>
         </div>
     )

@@ -5,13 +5,16 @@ import { AppContext } from "../AppState/AppContext"
 
 const Home = () => {
     const navigate = useNavigate()
-    const { isAuthenticated } = useContext(AppContext)
+    const { isAuthenticated, setIsAuthenticated } = useContext(AppContext)
     useEffect(() => {
-        !isAuthenticated && navigate('/signup')
+        !isAuthenticated && navigate('/login')
     }, [isAuthenticated])
     return (
         <div>
-            Hello
+            <button onClick={() => {
+                localStorage.removeItem('auth-token')
+                setIsAuthenticated(false)
+            }}>logout</button>
         </div>
     )
 }

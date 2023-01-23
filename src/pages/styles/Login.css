@@ -1,0 +1,55 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+.loginWrapper {
+    height: max-content;
+    width: 100%;
+    max-width: 700px;
+    padding: 2rem;
+    border-radius: 40px;
+    background: linear-gradient(to bottom, #831de2, #11e3af);
+    box-shadow: 10px 10px 10px rgb(211, 211, 211);
+}
+
+.loginWrapper h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: white;
+}
+
+.loginWrapper .inputField {
+    margin-bottom: 1rem;
+}
+
+.inputField .switchLogin {
+    font-size: .7rem;
+    color: white;
+    padding: .5rem;
+    text-decoration: underline;
+    cursor: pointer;
+    width: max-content;
+}
+
+.loginWrapper>h6 {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: .9rem;
+}
+
+.loginWrapper>h6>a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.loginError {
+    text-align: center;
+    color: white;
+    padding: 1rem;
+}

@@ -7,7 +7,7 @@
 }
 
 .signUpWrapper {
-    height: fit-content;
+    height: max-content;
     width: 100%;
     max-width: 700px;
     padding: 2rem;
@@ -40,6 +40,7 @@
 }
 
 .inputField label {
+    width: max-content;
     margin-bottom: .4rem;
     cursor: pointer;
     color: white;
@@ -107,4 +108,25 @@
     z-index: 10;
     pointer-events: none;
     transition: .5s;
+}
+
+.signUpWrapper>h6 {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: .9rem;
+}
+
+.signUpWrapper>h6>a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 350px) {
+    .signUpWrapper {
+        padding: 1rem;
+    }
+
+    .inputField input:not(input[type=radio]) {
+        min-width: 200px;
+    }
 }
