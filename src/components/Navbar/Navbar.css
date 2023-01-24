@@ -1,0 +1,67 @@
+.navbarWrapper {
+    background-color: white;
+}
+
+.navbar {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 1rem;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 500;
+    background: linear-gradient(to bottom, #831de2, #11e3af);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.mainMenu {
+    display: flex;
+    gap: 2rem;
+}
+
+.mainMenu>li {
+    position: relative;
+    padding-top: .5rem;
+}
+
+.mainMenu li img {
+    width: 27px;
+    border-radius: 50%;
+    transform: translateY(-2px);
+}
+
+.icon {
+    font-size: 1.4rem;
+}
+
+.profileMenu {
+    position: absolute;
+    background-color: white;
+    top: 100%;
+    right: -5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.226);
+    border-radius: 10px;
+}
+
+.profileMenu li {
+    padding: 1rem;
+    border-bottom: 1px solid #831de2;
+    font-size: 1rem;
+}
+
+.profileMenu li:nth-child(3) {
+    border-bottom: none;
+    cursor: pointer;
+}
+
+.profileMenu li a {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}

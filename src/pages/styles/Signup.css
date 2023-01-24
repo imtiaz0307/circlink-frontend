@@ -37,6 +37,8 @@
     flex-direction: column;
     flex: 1;
     position: relative;
+    max-width: 350px;
+    margin: auto;
 }
 
 .inputField label {
@@ -57,17 +59,17 @@
     padding: .8rem;
     border: none;
     outline: none;
-    border-bottom: 2px solid black;
+    border: 2px solid transparent;
     background-color: rgb(243, 243, 243);
     border-radius: 10px;
 }
 
 .inputField input:not(input[type=radio]):focus {
-    border-bottom: 2px solid red;
+    border: 2px solid red;
 }
 
 .inputField input:not(input[type=radio]):valid {
-    border-bottom: 2px solid #9c27b0;
+    border: 2px solid greenyellow;
 }
 
 .genderOptions {
