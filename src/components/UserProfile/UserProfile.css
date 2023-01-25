@@ -1,0 +1,111 @@
+.userProfile {
+    background-color: white;
+    min-height: calc(100vh - 70px);
+    margin: 1rem 0;
+    padding: .5rem;
+}
+
+.coverPhoto {
+    height: 250px;
+    width: 100%;
+    position: relative;
+    background: repeating-linear-gradient(237deg, #FFFFFF 0, #FFFFFF 5%, #F8EFFF 0, #F8EFFF 20%) 0 / 25px 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.coverPhoto .coverImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.coverPhoto form {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding: 1rem 0;
+    display: none;
+}
+
+.coverPhoto .coverImage:hover~form {
+    display: block;
+}
+
+.coverPhoto form label {
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.315);
+    border-radius: 5px;
+    padding: .5rem 1rem;
+    cursor: pointer;
+}
+
+.profilePhoto {
+    width: 200px;
+    height: 200px;
+    border: 5px solid #F8EFFF;
+    margin: auto;
+    border-radius: 50%;
+    overflow: hidden;
+    background: url('/Default_pfp.jpg');
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    transform: translateY(-100px);
+}
+
+.profilePhoto img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.profilePhoto form {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    padding: 1rem;
+    display: none;
+}
+
+.profilePhoto img:hover~form {
+    display: block;
+}
+
+.profilePhoto form label {
+    cursor: pointer;
+}
+
+.userDetails {
+    transform: translateY(-100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profileName {
+    font-size: 2rem;
+}
+
+.userNameAndCity {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: .5rem;
+    min-width: 250px;
+}
+
+.followBtn {
+    all: unset;
+    background-color: #F8EFFF;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.219);
+    padding: .5rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+}

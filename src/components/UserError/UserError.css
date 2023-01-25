@@ -1,0 +1,12 @@
+.noUserError {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.noUserError img {
+    width: 160px;
+    margin-bottom: 2rem;
+}

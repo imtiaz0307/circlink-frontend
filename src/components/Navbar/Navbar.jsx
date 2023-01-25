@@ -60,7 +60,7 @@ const Navbar = () => {
                             {
                                 showProfileMenu &&
                                 <ul className="profileMenu">
-                                    <li><NavLink to='/'><CgProfile className='icon' />Profile</NavLink></li>
+                                    <li><NavLink to={`/users/${currentUser.userName}`}><CgProfile className='icon' />Profile</NavLink></li>
                                     <li><NavLink to='/'><AiOutlineSetting className='icon' />Settings</NavLink></li>
                                     <li onClick={logoutHandler}><NavLink><IoExitOutline className='icon' />Logout</NavLink></li>
                                 </ul>
