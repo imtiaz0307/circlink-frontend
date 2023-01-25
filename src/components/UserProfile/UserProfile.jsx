@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../../AppState/AppContext'
-import { FaCity } from 'react-icons/fa'
+import PostsTab from '../PostsTab/PostsTab'
 import './UserProfile.css'
 
 const UserProfile = (props) => {
-    const { currentUser, url } = useContext(AppContext)
+    const { currentUser, url, currentUserLoaded, setCurrentUserLoaded } = useContext(AppContext)
     const { user } = props
     const isCurrentUser = user.userName === currentUser.userName
     const [isFollowing, setIsFollowing] = useState(false)
+    const [activeTab, setActiveTab] = useState(0)
 
     // follow/unfollow user
     const followUnfollowHandler = async () => {
@@ -24,10 +25,16 @@ const UserProfile = (props) => {
 
     // 
     useEffect(() => {
-        currentUser?.following?.some(followedUser => {
-            setIsFollowing(followedUser?._id == user?._id)
-        })
-    }, [])
+        if (currentUserLoaded) {
+            for (let i in currentUser.following) {
+                if (currentUser.following[i]._id == user._id) {
+                    setIsFollowing(true)
+                    break
+                }
+            }
+        }
+    }, [currentUserLoaded])
+
     return (
         <div className='userProfile'>
             <div className="coverPhoto">
@@ -75,6 +82,18 @@ const UserProfile = (props) => {
                     </div>
                 </div>
             </div>
+            <ul className="onProfileNavigation">
+                <li onClick={() => setActiveTab(0)} className={`${activeTab === 0 && 'active'}`}>Posts</li>
+                <li onClick={() => setActiveTab(1)} className={`${activeTab === 1 && 'active'}`}>Followers</li>
+                <li onClick={() => setActiveTab(2)} className={`${activeTab === 2 && 'active'}`}>Followings</li>
+                <li onClick={() => setActiveTab(3)} className={`${activeTab === 3 && 'active'}`}>About</li>
+                {isCurrentUser && <li onClick={() => setActiveTab(4)} className={`${activeTab === 4 && 'active'}`}>Settings</li>}
+            </ul>
+            <PostsTab activeTab={activeTab} username={user.userName} url={url} />
+            <div className="tabs" hidden={activeTab !== 1}>followers</div>
+            <div className="tabs" hidden={activeTab !== 2}>following</div>
+            <div className="tabs" hidden={activeTab !== 3}>about</div>
+            <div className="tabs" hidden={activeTab !== 4}>setting</div>
         </div>
     )
 }

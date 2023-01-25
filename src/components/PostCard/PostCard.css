@@ -1,0 +1,27 @@
+.post {
+    padding: 1rem;
+    background-color: #f8efff;
+    margin: 1rem;
+}
+
+.postTop {
+    display: flex;
+    gap: .5rem;
+    align-items: flex-start;
+}
+
+.postTop img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.postTop .postUserAndDate h3 {
+    font-size: 1rem;
+    margin-bottom: -3px;
+}
+
+.postUserAndDate p {
+    font-size: .8rem;
+}

@@ -97,15 +97,30 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: .5rem;
     min-width: 250px;
 }
 
 .followBtn {
     all: unset;
-    background-color: #F8EFFF;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.219);
+    background-color: rgb(50, 122, 255);
     padding: .5rem 1rem;
+    color: white;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.onProfileNavigation {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.onProfileNavigation li {
+    cursor: pointer;
+}
+
+.onProfileNavigation .active {
+    border-bottom: 2px solid black;
+    padding-bottom: .5rem;
+    scale: 1.05;
 }

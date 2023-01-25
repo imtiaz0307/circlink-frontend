@@ -11,7 +11,7 @@ import { IoExitOutline } from 'react-icons/io5'
 
 const Navbar = () => {
     // contexts
-    const { isAuthenticated, setIsAuthenticated, showProfileMenu, setShowProfileMenu, currentUser, setCurrentUser, url } = useContext(AppContext)
+    const { isAuthenticated, setIsAuthenticated, showProfileMenu, setShowProfileMenu, currentUser, setCurrentUser, url, setCurrentUserLoaded } = useContext(AppContext)
 
     // logout handler
     const logoutHandler = () => {
@@ -30,6 +30,7 @@ const Navbar = () => {
                 }
             })
             const data = await response.json()
+            setCurrentUserLoaded(true)
             setCurrentUser(data)
         }
         getCurrentUser()
