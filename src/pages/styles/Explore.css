@@ -1,0 +1,17 @@
+.explorePage {
+    max-width: 1000px;
+    background-color: white;
+    margin: 1rem auto;
+    padding: 1rem;
+}
+
+.explorePage>h3 {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 2rem;
+}
+
+.explorePage>p {
+    text-align: center;
+    padding: 2rem 0;
+}

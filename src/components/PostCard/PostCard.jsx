@@ -15,11 +15,25 @@ const PostCard = ({ post, isCurrentUser }) => {
 
     // cover ms in days
     const dateInDays = (date) => {
-        const days = Math.floor((new Date().getTime() - new Date(date).getTime()) / 3600000 / 24)
-        if (days < 0) {
-            return days / 60
+        const days = Math.abs((new Date().getTime() - new Date(date).getTime()) / 3600000 / 24)
+        if (days < 1) {
+            const hours = days * 24
+            if (hours < 1) {
+                const minutes = hours * 60
+                if (minutes < 1) {
+                    return 'a few seconds'
+                }
+                else {
+                    return `${Math.round(minutes)} minutes`
+                }
+            }
+            else {
+                return `${Math.round(hours)} hours`
+            }
         }
-        return `${days} days`
+        else {
+            return `${Math.round(days)} days`
+        }
     }
 
     // like unlike post handler
@@ -74,13 +88,13 @@ const PostCard = ({ post, isCurrentUser }) => {
                     post.caption.length > 175
                         ?
                         <p className="postText" style={{
-                            fontSize: post.file ? '1rem' : '2rem',
+                            fontSize: post.file ? '.9rem' : '1.5rem',
                             fontWeight: post.file ? '400' : '600',
                             padding: '0 .2rem'
                         }}>{showFullText ? post.caption : post.caption.slice(0, 175) + '....'} <span onClick={() => setShowFullText(!showFullText)}>{showFullText ? 'show less' : 'read more'}</span></p>
                         :
                         <p className="postText" style={{
-                            fontSize: post.file ? '1rem' : '2rem',
+                            fontSize: post.file ? '.9rem' : '1.5rem',
                             fontWeight: post.file ? '400' : '600',
                             padding: '0 .2rem'
                         }}>

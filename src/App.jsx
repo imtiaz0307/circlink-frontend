@@ -9,6 +9,7 @@ import { AppContext } from './AppState/AppContext'
 import Profile from './pages/Profile'
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import Explore from './pages/Explore'
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/explore' element={<Explore />} />
         <Route path='/signup' element={<Singup />} />
         <Route path='/login' element={<Login />} />
         <Route path='/users/:username' element={<Profile />} />

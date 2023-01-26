@@ -1,5 +1,8 @@
 .navbarWrapper {
     background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .navbar {
@@ -56,13 +59,33 @@
     font-size: 1rem;
 }
 
-.profileMenu li:nth-child(3) {
+.profileMenu li:nth-child(2) {
     border-bottom: none;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .profileMenu li a {
     display: flex;
     align-items: center;
     gap: .5rem;
+}
+
+@media screen and (max-width:440px) {
+    .navbar {
+        height: max-content;
+        flex-direction: column;
+        justify-content: space-between;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.13);
+    }
+
+    .mainMenu {
+        padding: .5rem;
+        width: 100%;
+        gap: 0;
+        justify-content: space-between;
+    }
+
+    .icon {
+        font-size: 1.6rem;
+    }
 }

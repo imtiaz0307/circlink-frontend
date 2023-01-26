@@ -3,11 +3,11 @@ import { Link, NavLink } from 'react-router-dom'
 import { useContext, useEffect } from 'react'
 import { AppContext } from '../../AppState/AppContext'
 import { CgProfile } from 'react-icons/cg'
-import { GrHome, GrNotification } from 'react-icons/gr'
+import { GrHome } from 'react-icons/gr'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { MdOutlineExplore } from 'react-icons/md'
 import { AiOutlineSetting } from 'react-icons/ai'
-import { IoExitOutline } from 'react-icons/io5'
+import { IoExitOutline, IoPeopleCircleOutline } from 'react-icons/io5'
 
 const Navbar = () => {
     // contexts
@@ -47,8 +47,8 @@ const Navbar = () => {
                     <ul className="mainMenu">
                         <li><NavLink to='/'><GrHome className='icon' /></NavLink></li>
                         <li><NavLink to='/'><AiOutlineSearch className='icon' /></NavLink></li>
-                        <li><NavLink to='/'><MdOutlineExplore className='icon' /></NavLink></li>
-                        <li><NavLink to='/'><GrNotification className='icon' /></NavLink></li>
+                        <li><NavLink to='/explore'><MdOutlineExplore className='icon' /></NavLink></li>
+                        <li><NavLink to='/suggestions'><IoPeopleCircleOutline className='icon' /></NavLink></li>
                         <li style={{ cursor: 'pointer' }}>
                             <span onClick={(e) => {
                                 setShowProfileMenu(true)
@@ -62,7 +62,6 @@ const Navbar = () => {
                                 showProfileMenu &&
                                 <ul className="profileMenu">
                                     <li><NavLink to={`/users/${currentUser.userName}`}><CgProfile className='icon' />Profile</NavLink></li>
-                                    <li><NavLink to='/'><AiOutlineSetting className='icon' />Settings</NavLink></li>
                                     <li onClick={logoutHandler}><NavLink><IoExitOutline className='icon' />Logout</NavLink></li>
                                 </ul>
                             }

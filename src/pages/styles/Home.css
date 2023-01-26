@@ -1,0 +1,37 @@
+.home {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    position: relative;
+    padding: 1rem;
+}
+
+.homePagePosts {
+    width: calc(100% - 250px);
+    background-color: white;
+    border-radius: 10px;
+}
+
+.homePagePosts>p {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.suggestions {
+    width: 250px;
+    position: sticky;
+    top: calc(70px + 1rem);
+}
+
+@media screen and (max-width: 700px) {
+    .homePagePosts {
+        width: 100%;
+    }
+
+    .suggestions {
+        display: none;
+    }
+}
