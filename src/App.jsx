@@ -19,7 +19,9 @@ const App = () => {
     !isAuthenticated && navigate('/login')
   }, [isAuthenticated])
   return (
-    <div className='App' onClick={() => setShowProfileMenu(false)}>
+    <div className='App' onClick={() => {
+      setShowProfileMenu(false)
+    }}>
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />

@@ -117,6 +117,7 @@
 
 .onProfileNavigation li {
     cursor: pointer;
+    transition: .25s;
 }
 
 .onProfileNavigation .active {

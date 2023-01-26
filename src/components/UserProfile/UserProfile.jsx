@@ -4,11 +4,12 @@ import PostsTab from '../PostsTab/PostsTab'
 import './UserProfile.css'
 
 const UserProfile = (props) => {
-    const { currentUser, url, currentUserLoaded, setCurrentUserLoaded } = useContext(AppContext)
+    const { currentUser, url, currentUserLoaded } = useContext(AppContext)
     const { user } = props
     const isCurrentUser = user.userName === currentUser.userName
     const [isFollowing, setIsFollowing] = useState(false)
     const [activeTab, setActiveTab] = useState(0)
+    const [followersCount, setFollowersCount] = useState(user.followers.length)
 
     // follow/unfollow user
     const followUnfollowHandler = async () => {
@@ -21,6 +22,7 @@ const UserProfile = (props) => {
         })
         const data = await response.json()
         setIsFollowing(!isFollowing)
+        isFollowing ? setFollowersCount(followersCount - 1) : setFollowersCount(followersCount + 1)
     }
 
     // 
@@ -84,12 +86,22 @@ const UserProfile = (props) => {
             </div>
             <ul className="onProfileNavigation">
                 <li onClick={() => setActiveTab(0)} className={`${activeTab === 0 && 'active'}`}>Posts</li>
-                <li onClick={() => setActiveTab(1)} className={`${activeTab === 1 && 'active'}`}>Followers</li>
-                <li onClick={() => setActiveTab(2)} className={`${activeTab === 2 && 'active'}`}>Followings</li>
+                <li onClick={() => setActiveTab(1)} className={`${activeTab === 1 && 'active'}`}>Followers <span style={{
+                    background: 'black',
+                    color: 'white',
+                    padding: '0 10px',
+                    borderRadius: '50px'
+                }}>{followersCount}</span></li>
+                <li onClick={() => setActiveTab(2)} className={`${activeTab === 2 && 'active'}`}>Followings <span style={{
+                    background: 'black',
+                    color: 'white',
+                    padding: '0 10px',
+                    borderRadius: '50px'
+                }}>{user.following.length}</span></li>
                 <li onClick={() => setActiveTab(3)} className={`${activeTab === 3 && 'active'}`}>About</li>
                 {isCurrentUser && <li onClick={() => setActiveTab(4)} className={`${activeTab === 4 && 'active'}`}>Settings</li>}
             </ul>
-            <PostsTab activeTab={activeTab} username={user.userName} url={url} />
+            <PostsTab activeTab={activeTab} username={user.userName} url={url} isCurrentUser={isCurrentUser} />
             <div className="tabs" hidden={activeTab !== 1}>followers</div>
             <div className="tabs" hidden={activeTab !== 2}>following</div>
             <div className="tabs" hidden={activeTab !== 3}>about</div>
