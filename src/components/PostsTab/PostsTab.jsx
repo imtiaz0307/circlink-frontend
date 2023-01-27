@@ -2,13 +2,13 @@ import './PostsTab.css'
 import React, { useEffect, useState } from 'react'
 import PostCard from '../PostCard/PostCard'
 
-const PostsTab = ({ activeTab, username, url, isCurrentUser }) => {
+const PostsTab = ({ activeTab, userid, url, isCurrentUser }) => {
     const [posts, setPosts] = useState([])
     const [postsLoaded, setPostsLoaded] = useState(false)
 
     useEffect(() => {
         const fetchUserPosts = async () => {
-            const response = await fetch(`${url}/api/posts/getuserposts/${username}`, {
+            const response = await fetch(`${url}/api/posts/getuserposts/${userid}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'applications/json'
@@ -19,7 +19,7 @@ const PostsTab = ({ activeTab, username, url, isCurrentUser }) => {
             setPostsLoaded(true)
         }
         fetchUserPosts()
-    }, [username])
+    }, [userid])
 
     return (
         <div hidden={activeTab !== 0} style={{ padding: '1rem 0' }}>
@@ -40,7 +40,7 @@ const PostsTab = ({ activeTab, username, url, isCurrentUser }) => {
                         </>
 
                         :
-                        <div className='noPostError'>No Posts found.</div>
+                        <div className='noPostError'>User has no posts.</div>
                     :
                     <div>Loading...</div>
             }

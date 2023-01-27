@@ -35,6 +35,8 @@
 
 .mainMenu li img {
     width: 27px;
+    height: 27px;
+    object-fit: cover;
     border-radius: 50%;
     transform: translateY(-2px);
 }
@@ -61,7 +63,6 @@
 
 .profileMenu li:nth-child(2) {
     border-bottom: none;
-    /* cursor: pointer; */
 }
 
 .profileMenu li a {

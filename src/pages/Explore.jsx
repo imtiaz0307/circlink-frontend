@@ -29,15 +29,25 @@ const Explore = () => {
                 !isLoading
                     ?
                     <>
-                        <h3>Posts From Community Members</h3>
-                        {posts.map((post, index) => {
-                            return < PostCard post={post} isCurrentUser={currentUser._id == post.user._id} key={index} />
-                        })
+                        {
+                            posts.length > 0
+                                ?
+                                <>
+                                    <h3>Posts From Community Members</h3>
+                                    <div className='postsGrid'>
+                                        {posts.map((post, index) => {
+                                            return < PostCard post={post} isCurrentUser={currentUser._id == post.userid} key={index} />
+                                        })
+                                        }
+                                    </div>
+                                    <p>No more posts.</p>
+                                </>
+                                :
+                                <p className='no posts'>No Posts To Show</p>
                         }
-                        <p>No more posts.</p>
                     </>
                     :
-                    'lodaidn'
+                    'loading'
             }
         </div>
     )

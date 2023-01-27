@@ -16,8 +16,8 @@ const Profile = () => {
         const getUser = async () => {
             const response = await fetch(`${url}/api/users/${username}`)
             const data = await response.json()
-            setUser(data)
             setIsLoading(false)
+            setUser(data)
         }
         getUser()
     }, [username])

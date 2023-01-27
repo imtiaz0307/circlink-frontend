@@ -19,11 +19,13 @@ const Home = () => {
                     'auth-token': localStorage.getItem('auth-token')
                 }
             })
-            const data = await response.json()
-            const datasorted = data.sort((x, y) => {
+            let data = await response.json()
+
+            data = await data.sort((x, y) => {
                 return new Date(x.createdAt) < new Date(y.createdAt) ? 1 : -1
             })
-            setPosts(datasorted)
+
+            setPosts(data)
             setIsLoading(false)
         }
         getTimeline()
@@ -38,12 +40,20 @@ const Home = () => {
                     <div className="home">
                         <div className="homePagePosts">
                             {
-                                posts.map((post, index) => {
-                                    return < PostCard post={post} isCurrentUser={currentUser._id == post.user._id} key={index} />
+                                posts.length > 0
+                                    ?
+                                    <>
+                                        {
+                                            posts.map((post, index) => {
+                                                return < PostCard post={post} isCurrentUser={currentUser._id == post.userid} key={index} />
 
-                                })
+                                            })
+                                        }
+                                        <p>No More Posts.</p>
+                                    </>
+                                    :
+                                    <p className='no posts'>No Posts To Show</p>
                             }
-                            <p>No More Posts.</p>
                         </div>
                         <div className="suggestions">
                             Friends suggestions will be show here.

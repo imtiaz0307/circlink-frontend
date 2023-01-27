@@ -14,8 +14,23 @@ const AppState = (props) => {
     // auth
     const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem('auth-token'))
 
+    // get user by id
+    const getUserById = async (userid) => {
+
+        const response = await fetch(`${url}/api/users/id/${userid}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'applicaiton/json'
+            }
+        })
+
+        const data = await response.json()
+
+        return data
+    }
+
     return (
-        <AppContext.Provider value={{ url, isAuthenticated, setIsAuthenticated, showProfileMenu, setShowProfileMenu, currentUser, setCurrentUser, currentUserLoaded, setCurrentUserLoaded, }}>
+        <AppContext.Provider value={{ url, isAuthenticated, setIsAuthenticated, showProfileMenu, setShowProfileMenu, currentUser, setCurrentUser, currentUserLoaded, setCurrentUserLoaded, getUserById, }}>
             {props.children}
         </AppContext.Provider>
     )

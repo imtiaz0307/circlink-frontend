@@ -6,7 +6,6 @@ import { CgProfile } from 'react-icons/cg'
 import { GrHome } from 'react-icons/gr'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { MdOutlineExplore } from 'react-icons/md'
-import { AiOutlineSetting } from 'react-icons/ai'
 import { IoExitOutline, IoPeopleCircleOutline } from 'react-icons/io5'
 
 const Navbar = () => {

@@ -10,19 +10,72 @@ const UserProfile = (props) => {
     const [isFollowing, setIsFollowing] = useState(false)
     const [activeTab, setActiveTab] = useState(0)
     const [followersCount, setFollowersCount] = useState(user.followers.length)
+    const [profilePicture, setProfilePicture] = useState('')
+    const [coverPicture, setCoverPicture] = useState('')
 
     // follow/unfollow user
     const followUnfollowHandler = async () => {
-        const response = await fetch(`${url}/api/users/${user._id}/${isFollowing ? 'unfollow' : 'follow'}`, {
+
+        await fetch(`${url}/api/users/${user._id}/${isFollowing ? 'unfollow' : 'follow'}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 'auth-token': localStorage.getItem('auth-token')
             }
         })
-        const data = await response.json()
+
         setIsFollowing(!isFollowing)
         isFollowing ? setFollowersCount(followersCount - 1) : setFollowersCount(followersCount + 1)
+    }
+
+    // change profile picture
+    const changeProfileHandler = (e) => {
+        const file = e.target.files[0]
+        if (file.size > 2048000) {
+            alert('File size exceeding the limit')
+        }
+        else {
+            const reader = new FileReader()
+            reader.readAsDataURL(file)
+            reader.onloadend = async () => {
+
+                await fetch(`${url}/api/users/update`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'auth-token': localStorage.getItem('auth-token')
+                    },
+                    body: JSON.stringify({ name: currentUser.name, userName: currentUser.userName, profilePicture: reader.result })
+                })
+
+                setProfilePicture(reader.result)
+            }
+        }
+    }
+
+    // change profile picture
+    const changeCoverHandler = (e) => {
+        const file = e.target.files[0]
+        if (file.size > 2048000) {
+            alert('File size exceeding the limit')
+        }
+        else {
+            const reader = new FileReader()
+            reader.readAsDataURL(file)
+            reader.onloadend = async () => {
+
+                await fetch(`${url}/api/users/update`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'auth-token': localStorage.getItem('auth-token')
+                    },
+                    body: JSON.stringify({ name: currentUser.name, userName: currentUser.userName, coverPicture: reader.result })
+                })
+
+                setCoverPicture(reader.result)
+            }
+        }
     }
 
     // 
@@ -39,32 +92,33 @@ const UserProfile = (props) => {
 
     return (
         <div className='userProfile'>
+            <div className="profileLoader"></div>
             <div className="coverPhoto">
                 {
                     user.coverPicture
                     &&
-                    <img src={user.coverPicture} alt={`${user.name}'s Cover Photo.`} className='coverImage' />
+                    <img src={coverPicture || user.coverPicture} alt={`${user.name}'s Cover Photo.`} className='coverImage' />
                 }
                 {
                     isCurrentUser
                     &&
                     <form>
                         <label htmlFor="changeCover">Change Cover Photo</label>
-                        <input type="file" id="changeCover" hidden />
+                        <input type="file" id="changeCover" hidden onChange={changeCoverHandler} multiple={false} accept='image/*' />
                     </form>
                 }
             </div>
             <div className="profilePhoto">
                 {
                     user.profilePicture &&
-                    <img src={user.profilePicture} alt={user.name} />
+                    <img src={profilePicture || user.profilePicture} alt={user.name} />
                 }
                 {
                     isCurrentUser
                     &&
                     <form>
                         <label htmlFor="changeProfile">Change</label>
-                        <input type="file" id="changeProfile" hidden />
+                        <input type="file" id="changeProfile" hidden onChange={changeProfileHandler} multiple={false} accept='image/*' />
                     </form>
                 }
             </div>
@@ -101,7 +155,7 @@ const UserProfile = (props) => {
                 <li onClick={() => setActiveTab(3)} className={`${activeTab === 3 && 'active'}`}>About</li>
                 {isCurrentUser && <li onClick={() => setActiveTab(4)} className={`${activeTab === 4 && 'active'}`}>Settings</li>}
             </ul>
-            <PostsTab activeTab={activeTab} username={user.userName} url={url} isCurrentUser={isCurrentUser} />
+            <PostsTab activeTab={activeTab} userid={user._id} url={url} isCurrentUser={isCurrentUser} />
             <div className="tabs" hidden={activeTab !== 1}>followers</div>
             <div className="tabs" hidden={activeTab !== 2}>following</div>
             <div className="tabs" hidden={activeTab !== 3}>about</div>

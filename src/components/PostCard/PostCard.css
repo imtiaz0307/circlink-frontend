@@ -4,6 +4,7 @@
     border: 2px solid rgba(128, 128, 128, 0.199);
     margin: 1rem;
     border-radius: 10px;
+    height: fit-content;
 }
 
 .postTop {
@@ -75,17 +76,23 @@
 .postImgContainer {
     display: flex;
     align-items: center;
-    max-height: 600px;
-    width: 100%;
+    max-height: 500px;
     border-radius: 10px;
     overflow: hidden;
+    /* background-color: black; */
+    border: 2px solid rgba(128, 128, 128, 0.199);
+
 }
 
 .postContent img {
-    height: 100%;
+    height: 500px;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
     cursor: pointer
+}
+
+.postText {
+    word-wrap: break-word;
 }
 
 .postText span {

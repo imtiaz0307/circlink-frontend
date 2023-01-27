@@ -5,6 +5,7 @@
     padding: .5rem;
 }
 
+
 .coverPhoto {
     height: 250px;
     width: 100%;
@@ -29,7 +30,7 @@
     display: none;
 }
 
-.coverPhoto .coverImage:hover~form {
+.coverPhoto:hover>form {
     display: block;
 }
 
@@ -74,7 +75,7 @@
     display: none;
 }
 
-.profilePhoto img:hover~form {
+.profilePhoto:hover>form {
     display: block;
 }
 
