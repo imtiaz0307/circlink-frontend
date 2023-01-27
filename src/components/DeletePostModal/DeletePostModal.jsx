@@ -15,7 +15,6 @@ const DeletePostModal = ({ ssdm, postid, url, postCard }) => {
                             }
                         })
                         const data = await response.json()
-                        console.log(data)
                         if (data.success) {
                             ssdm(false)
                             postCard.remove()
