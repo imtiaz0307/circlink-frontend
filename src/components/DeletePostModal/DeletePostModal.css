@@ -1,0 +1,40 @@
+.dpmw {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100000;
+}
+
+.deletePostModal {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.deletePostModal p {
+    margin-bottom: 1rem;
+}
+
+.deletePostModal .buttons {
+    display: flex;
+    gap: .5rem;
+}
+
+.deletePostModal .buttons button {
+    all: unset;
+    background-color: rgb(50, 122, 255);
+    padding: .5rem 1rem;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.deletePostModal .buttons button:nth-child(2) {
+    background-color: grey;
+}

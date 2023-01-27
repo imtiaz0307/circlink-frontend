@@ -6,8 +6,11 @@ import { FaRegCommentAlt } from 'react-icons/fa'
 import { useState, useContext } from 'react'
 import { AppContext } from '../../AppState/AppContext'
 import { useEffect } from 'react'
+import DeletePostModal from '../DeletePostModal/DeletePostModal'
+import { useRef } from 'react'
 
 const PostCard = ({ post, isCurrentUser }) => {
+    const postRef = useRef(null)
     const { currentUser, url, getUserById } = useContext(AppContext)
     const [showPostMenu, setShowPostMenu] = useState(false)
     const [postLiked, setPostLiked] = useState(post.likes.includes(currentUser._id))
@@ -15,6 +18,7 @@ const PostCard = ({ post, isCurrentUser }) => {
     const [showFullText, setShowFullText] = useState(false)
     const [postUser, setPostUser] = useState('')
     const [isUserReady, setIsUserReady] = useState(false)
+    const [showDeleteModal, setShowDeleteModal] = useState(false)
 
     // cover ms in days
     const dateInDays = (date) => {
@@ -63,7 +67,7 @@ const PostCard = ({ post, isCurrentUser }) => {
     }, [])
 
     return (
-        <div className="post" onClick={() => setShowPostMenu(false)}>
+        <div className="post" ref={postRef} onClick={() => setShowPostMenu(false)}>
             {
                 isUserReady
                     ?
@@ -91,7 +95,7 @@ const PostCard = ({ post, isCurrentUser }) => {
                                         &&
                                         <ul className="postMenu">
                                             <li><AiOutlineEdit /> Edit Post</li>
-                                            <li><AiOutlineDelete /> Delete Post</li>
+                                            <li onClick={() => setShowDeleteModal(true)}><AiOutlineDelete /> Delete Post</li>
                                         </ul>
                                     }
                                 </div>
@@ -169,6 +173,11 @@ const PostCard = ({ post, isCurrentUser }) => {
                     </>
                     :
                     'loading'
+            }
+            {
+                showDeleteModal
+                &&
+                <DeletePostModal postCard={postRef.current} ssdm={setShowDeleteModal} postid={post._id} url={url} />
             }
         </div >
     )

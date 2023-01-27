@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { useContext } from 'react'
 import { AppContext } from '../AppState/AppContext'
+import AddPost from '../components/AddPost/AddPost'
 import PostCard from '../components/PostCard/PostCard'
 import './styles/Home.css'
 
@@ -9,6 +10,7 @@ const Home = () => {
     const { url, currentUser } = useContext(AppContext)
     const [isLoading, setIsLoading] = useState(true)
     const [posts, setPosts] = useState('')
+    const [autoRefresher, setAutoRefresher] = useState(0)
 
     useEffect(() => {
         const getTimeline = async () => {
@@ -29,7 +31,7 @@ const Home = () => {
             setIsLoading(false)
         }
         getTimeline()
-    }, [])
+    }, [autoRefresher])
     return (
         <>
             {
@@ -39,6 +41,7 @@ const Home = () => {
                     :
                     <div className="home">
                         <div className="homePagePosts">
+                            <AddPost setAutoRefresher={setAutoRefresher} autoRefresher={autoRefresher} />
                             {
                                 posts.length > 0
                                     ?

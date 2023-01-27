@@ -1,0 +1,75 @@
+.addPost {
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 10px;
+    border: 2px solid rgba(128, 128, 128, 0.2);
+}
+
+.addPost h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: 400;
+    color: rgb(50, 122, 255);
+}
+
+.addPost textarea {
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    height: 120px;
+    width: 100%;
+    border-radius: 10px;
+    resize: none;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.addPost .photoPreview {
+    height: 100px;
+    width: 100px;
+    padding: 1.2rem 1rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    position: relative;
+    border-radius: 10px;
+}
+
+.addPost .photoPreview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.addPost .photoPreview .xmark {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    cursor: pointer;
+}
+
+.apfBottom {
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem;
+    align-items: center;
+}
+
+.apfBottom label {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    cursor: pointer;
+}
+
+.apfBottom button {
+    all: unset;
+    background-color: rgb(50, 122, 255);
+    padding: .5rem 1rem;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.apfBottom button:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
