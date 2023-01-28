@@ -25,7 +25,6 @@ const AppState = (props) => {
         })
 
         const data = await response.json()
-
         return data
     }
 
