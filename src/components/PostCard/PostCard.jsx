@@ -8,6 +8,7 @@ import { AppContext } from '../../AppState/AppContext'
 import { useEffect } from 'react'
 import DeletePostModal from '../DeletePostModal/DeletePostModal'
 import { useRef } from 'react'
+import PostEditModal from '../PostEditModal/PostEditModal'
 
 const PostCard = ({ post, isCurrentUser }) => {
     const postRef = useRef(null)
@@ -19,6 +20,7 @@ const PostCard = ({ post, isCurrentUser }) => {
     const [postUser, setPostUser] = useState('')
     const [isUserReady, setIsUserReady] = useState(false)
     const [showDeleteModal, setShowDeleteModal] = useState(false)
+    const [showEditModal, setShowEditModal] = useState(false)
 
     // cover ms in days
     const dateInDays = (date) => {
@@ -74,13 +76,16 @@ const PostCard = ({ post, isCurrentUser }) => {
                     <>
                         <div className="postTop">
                             <div className="userImageAndName">
-                                <Link to={`/users/${postUser.userName}`}>
-                                    <img src={postUser.profilePicture || '/Default_pfp.jpg'} alt={postUser.name} />
+
+                                <Link to={`/users/${isCurrentUser ? currentUser.userName : postUser.userName}`}>
+                                    <img src={isCurrentUser ? currentUser.profilePicture : postUser.profilePicture || '/Default_pfp.jpg'} alt={isCurrentUser ? currentUser.userName : postUser.name} />
                                 </Link>
+
                                 <div className="postUserAndDate">
-                                    <h3><Link to={`/users/${postUser.userName}`}>{postUser.name}</Link></h3>
+                                    <h3><Link to={`/users/${isCurrentUser ? currentUser.userName : postUser.userName}`}>{isCurrentUser ? currentUser.name : postUser.name}</Link></h3>
                                     <p>{dateInDays(post.createdAt)} ago</p>
                                 </div>
+
                             </div>
                             {
                                 isCurrentUser
@@ -178,6 +183,11 @@ const PostCard = ({ post, isCurrentUser }) => {
                 showDeleteModal
                 &&
                 <DeletePostModal postCard={postRef.current} ssdm={setShowDeleteModal} postid={post._id} url={url} />
+            }
+            {
+                showEditModal
+                &&
+                <PostEditModal post={post} url={url} ssem={setShowEditModal} />
             }
         </div >
     )

@@ -48,7 +48,9 @@ const Home = () => {
                                     <>
                                         {
                                             posts.map((post, index) => {
-                                                return < PostCard post={post} isCurrentUser={currentUser._id == post.userid} key={index} />
+                                                return < PostCard
+                                                    post={post}
+                                                    isCurrentUser={currentUser._id == post.userid} key={index} />
 
                                             })
                                         }
