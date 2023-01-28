@@ -1,0 +1,120 @@
+.editModalWrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 100vh;
+    width: 100vw;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+.editModal {
+    background-color: white;
+    padding: 1rem;
+    width: 50vw;
+    border-radius: 10px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: max-content;
+    min-width: 300px;
+}
+
+.editModal h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: 400;
+    color: rgb(50, 122, 255);
+}
+
+.editModal textarea {
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    height: 120px;
+    width: 100%;
+    border-radius: 10px;
+    resize: none;
+    padding: 1rem;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+}
+
+.editPostTextContainer label {
+    padding: .2rem;
+}
+
+.editModal form>p {
+    padding: 0 .2rem .5rem;
+}
+
+.editModalPreview {
+    height: 165px;
+    padding: 1.2rem 1rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    position: relative;
+    margin: 0 auto 1rem;
+    border-radius: 10px;
+}
+
+.editModalPreview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.editModalPreview .xmark {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    cursor: pointer;
+}
+
+.editPostFileContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 1rem;
+    /* width: fit-content; */
+    background-color: #f8efff;
+    border-radius: 10px;
+}
+
+
+.editPostFileContainer label {
+    text-align: center;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.editModal .buttons {
+    display: flex;
+    justify-content: end;
+    gap: 1rem;
+    padding: 1rem 0 0;
+}
+
+.editModal .buttons button {
+    all: unset;
+    background-color: rgb(50, 122, 255);
+    padding: .5rem 1rem;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.editModal .buttons button:nth-child(1) {
+    background-color: white;
+    border: 1px solid rgb(50, 122, 255);
+    color: rgb(50, 122, 255);
+}
+
+.editModal .buttons button:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}

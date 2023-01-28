@@ -7,6 +7,7 @@ const AppState = (props) => {
     const [showProfileMenu, setShowProfileMenu] = useState(false)
     const [currentUser, setCurrentUser] = useState('')
     const [currentUserLoaded, setCurrentUserLoaded] = useState(false)
+    const [autoRefresher, setAutoRefresher] = useState(0)
 
     // website link
     const url = 'http://localhost:3000'
@@ -29,7 +30,7 @@ const AppState = (props) => {
     }
 
     return (
-        <AppContext.Provider value={{ url, isAuthenticated, setIsAuthenticated, showProfileMenu, setShowProfileMenu, currentUser, setCurrentUser, currentUserLoaded, setCurrentUserLoaded, getUserById, }}>
+        <AppContext.Provider value={{ url, isAuthenticated, setIsAuthenticated, showProfileMenu, setShowProfileMenu, currentUser, setCurrentUser, currentUserLoaded, setCurrentUserLoaded, getUserById, autoRefresher, setAutoRefresher, }}>
             {props.children}
         </AppContext.Provider>
     )

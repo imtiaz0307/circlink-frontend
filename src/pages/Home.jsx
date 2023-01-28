@@ -7,10 +7,10 @@ import PostCard from '../components/PostCard/PostCard'
 import './styles/Home.css'
 
 const Home = () => {
-    const { url, currentUser } = useContext(AppContext)
+    const { url, currentUser, autoRefresher, setAutoRefresher } = useContext(AppContext)
     const [isLoading, setIsLoading] = useState(true)
     const [posts, setPosts] = useState('')
-    const [autoRefresher, setAutoRefresher] = useState(0)
+
 
     useEffect(() => {
         const getTimeline = async () => {

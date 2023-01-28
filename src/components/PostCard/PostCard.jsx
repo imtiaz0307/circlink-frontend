@@ -100,7 +100,7 @@ const PostCard = ({ post, isCurrentUser }) => {
                                         showPostMenu
                                         &&
                                         <ul className="postMenu">
-                                            <li><AiOutlineEdit /> Edit Post</li>
+                                            <li onClick={() => setShowEditModal(true)}><AiOutlineEdit /> Edit Post</li>
                                             <li onClick={() => setShowDeleteModal(true)}><AiOutlineDelete /> Delete Post</li>
                                         </ul>
                                     }
