@@ -11,6 +11,7 @@ import { useRef } from 'react'
 import PostEditModal from '../PostEditModal/PostEditModal'
 import AddCommentForm from '../AddCommentForm/AddCommentForm'
 import CommentCard from '../CommentCard/CommentCard'
+import { dateConversion } from '../../Helpers/DateConversion'
 
 
 const PostCard = ({ post, isCurrentUser }) => {
@@ -26,28 +27,6 @@ const PostCard = ({ post, isCurrentUser }) => {
     const [showEditModal, setShowEditModal] = useState(false)
     const [postCommentsCount, setPostCommentsCount] = useState(post.comments.length)
 
-    // cover ms in days
-    const dateInDays = (date) => {
-        const days = Math.abs((new Date().getTime() - new Date(date).getTime()) / 3600000 / 24)
-        if (days < 1) {
-            const hours = days * 24
-            if (hours < 1) {
-                const minutes = hours * 60
-                if (minutes < 1) {
-                    return 'a few seconds'
-                }
-                else {
-                    return `${Math.round(minutes)} minutes`
-                }
-            }
-            else {
-                return `${Math.round(hours)} hours`
-            }
-        }
-        else {
-            return `${Math.round(days)} days`
-        }
-    }
 
     // like unlike post handler
     const likeUnlikePostHandler = async () => {
@@ -87,7 +66,7 @@ const PostCard = ({ post, isCurrentUser }) => {
 
                                 <div className="postUserAndDate">
                                     <h3><Link to={`/users/${postUser.userName}`}>{postUser.name}</Link></h3>
-                                    <p>{dateInDays(post.createdAt)} ago</p>
+                                    <p>{dateConversion(post.createdAt)} ago</p>
                                 </div>
 
                             </div>
@@ -184,7 +163,11 @@ const PostCard = ({ post, isCurrentUser }) => {
                             {
                                 post.comments.length > 0
                                 &&
-                                <CommentCard commentid={post.comments[0]} currentUser={currentUser} url={url} getUserById={getUserById} postid={post._id} />
+                                <CommentCard
+                                    commentid={post.comments[Math.floor(Math.random() * post.comments.length)]}
+                                    currentUser={currentUser} url={url} getUserById={getUserById} postid={post._id} />
+
+
                             }
                         </div>
                     </>

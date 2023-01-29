@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../AppState/AppContext'
 import AddPost from '../components/AddPost/AddPost'
 import PostCard from '../components/PostCard/PostCard'

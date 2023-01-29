@@ -4,7 +4,7 @@ import { useContext, useRef } from 'react'
 import { AppContext } from '../../AppState/AppContext'
 
 const AddCommentForm = ({ pcc, spcc, postid }) => {
-    const { url, currentUser } = useContext(AppContext)
+    const { url } = useContext(AppContext)
     const comment = useRef(null)
 
     const addCommentHandler = async (e) => {

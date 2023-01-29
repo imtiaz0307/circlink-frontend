@@ -23,8 +23,8 @@
 }
 
 .commentTopSection a img {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -32,11 +32,17 @@
 .commentTopSection a p {
     font-size: 1rem;
     font-weight: 600;
+    display: flex;
+    flex-direction: column;
+}
+
+.commentTopSection a p span {
+    font-size: .8rem
 }
 
 .commentAndUserDetails .commentContent p {
     font-size: .9rem;
-    padding: .2rem .5rem .2rem calc(23px + .5rem);
+    padding: .2rem .5rem .2rem calc(30px + .5rem);
 }
 
 .commentMenuContainer {
@@ -68,11 +74,33 @@
     border-bottom: none;
 }
 
+.editComment {
+    display: flex;
+    flex-direction: column;
+}
+
+.editComment input {
+    all: unset;
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    padding: .5rem 1rem;
+    margin: .5rem 0;
+    font-size: .8rem;
+    border-radius: 10px;
+}
+
+.editComment button {
+    all: unset;
+    align-self: flex-end;
+    font-size: .7rem;
+    padding: 0 .5rem;
+    cursor: pointer;
+}
+
 .likesCountAndLikeButton {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 0 .5rem 0 calc(30px + 1rem);
+    padding: 0 .5rem 0 calc(30px + .5rem);
 }
 
 .commentLikeButton {

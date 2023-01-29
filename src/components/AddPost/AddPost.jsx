@@ -14,6 +14,7 @@ const AddPost = ({ setAutoRefresher, autoRefresher }) => {
     const [preview, setPreview] = useState('')
     const [clickable, setClickable] = useState(0)
     const navigate = useNavigate()
+    const addPostButton = useRef(null)
 
     // addpost
     const addPostHandler = async (e) => {
@@ -25,6 +26,8 @@ const AddPost = ({ setAutoRefresher, autoRefresher }) => {
         }
         else {
             if (!currentFile) {
+
+                addPostButton.current.innerText = 'Posting'
 
                 await fetch(`${url}/api/posts/create`, {
                     method: 'POST',
@@ -38,8 +41,12 @@ const AddPost = ({ setAutoRefresher, autoRefresher }) => {
                 setAutoRefresher(autoRefresher + 1)
                 file.current.value = caption.current.value = ''
                 setPreview('')
+                addPostButton.current.innerText = 'Post'
                 navigate(`/users/${currentUser.userName}`)
             } else {
+
+                addPostButton.current.innerText = 'Posting'
+
                 const reader = new FileReader()
                 reader.readAsDataURL(currentFile)
                 reader.onloadend = async () => {
@@ -57,6 +64,7 @@ const AddPost = ({ setAutoRefresher, autoRefresher }) => {
                     setAutoRefresher(autoRefresher + 1)
                     file.current.value = caption.current.value = ''
                     setPreview('')
+                    addPostButton.current.innerText = 'Post'
                     navigate(`/users/${currentUser.userName}`)
                 }
             }
@@ -96,7 +104,7 @@ const AddPost = ({ setAutoRefresher, autoRefresher }) => {
                         }
                         setClickable(prev => prev + e.target.value.length)
                     }} />
-                    <button type="submit" disabled={!clickable}>Post</button>
+                    <button type="submit" disabled={!clickable} ref={addPostButton}>Post</button>
                 </div>
             </form>
         </div>
