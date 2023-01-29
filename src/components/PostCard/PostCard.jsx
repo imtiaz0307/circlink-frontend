@@ -9,6 +9,8 @@ import { useEffect } from 'react'
 import DeletePostModal from '../DeletePostModal/DeletePostModal'
 import { useRef } from 'react'
 import PostEditModal from '../PostEditModal/PostEditModal'
+import AddCommentForm from '../AddCommentForm/AddCommentForm'
+import CommentCard from '../CommentCard/CommentCard'
 
 
 const PostCard = ({ post, isCurrentUser }) => {
@@ -22,6 +24,7 @@ const PostCard = ({ post, isCurrentUser }) => {
     const [isUserReady, setIsUserReady] = useState(false)
     const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [showEditModal, setShowEditModal] = useState(false)
+    const [postCommentsCount, setPostCommentsCount] = useState(post.comments.length)
 
     // cover ms in days
     const dateInDays = (date) => {
@@ -150,10 +153,10 @@ const PostCard = ({ post, isCurrentUser }) => {
                                         </p>
                                     }
                                     {
-                                        post.comments?.length > 0
+                                        postCommentsCount
                                         &&
                                         <p className="postCommentsCount">
-                                            <span>{post.comments.length} comments</span>
+                                            <span>{postCommentsCount} comments</span>
                                         </p>
                                     }
                                 </div>
@@ -175,6 +178,14 @@ const PostCard = ({ post, isCurrentUser }) => {
                                 <button><FaRegCommentAlt /> <span>Comment</span></button>
                                 <button><AiOutlineShareAlt /> <span>Share</span></button>
                             </div>
+                        </div>
+                        <AddCommentForm pcc={postCommentsCount} spcc={setPostCommentsCount} postid={post._id} />
+                        <div className="postComments">
+                            {
+                                post.comments.length > 0
+                                &&
+                                <CommentCard commentid={post.comments[0]} currentUser={currentUser} url={url} getUserById={getUserById} postid={post._id} />
+                            }
                         </div>
                     </>
                     :

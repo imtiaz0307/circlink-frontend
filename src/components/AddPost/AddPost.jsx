@@ -5,13 +5,15 @@ import { HiXMark } from 'react-icons/hi2'
 import { useContext } from 'react'
 import { AppContext } from '../../AppState/AppContext'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const AddPost = ({ setAutoRefresher, autoRefresher }) => {
     const caption = useRef(null)
     const file = useRef(null)
-    const { url } = useContext(AppContext)
+    const { url, currentUser } = useContext(AppContext)
     const [preview, setPreview] = useState('')
     const [clickable, setClickable] = useState(0)
+    const navigate = useNavigate()
 
     // addpost
     const addPostHandler = async (e) => {
@@ -36,6 +38,7 @@ const AddPost = ({ setAutoRefresher, autoRefresher }) => {
                 setAutoRefresher(autoRefresher + 1)
                 file.current.value = caption.current.value = ''
                 setPreview('')
+                navigate(`/users/${currentUser.userName}`)
             } else {
                 const reader = new FileReader()
                 reader.readAsDataURL(currentFile)
@@ -54,6 +57,7 @@ const AddPost = ({ setAutoRefresher, autoRefresher }) => {
                     setAutoRefresher(autoRefresher + 1)
                     file.current.value = caption.current.value = ''
                     setPreview('')
+                    navigate(`/users/${currentUser.userName}`)
                 }
             }
         }

@@ -1,0 +1,27 @@
+.addCommentForm {
+    display: flex;
+    justify-content: center;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: .2rem;
+    margin-bottom: 1rem;
+}
+
+.addCommentForm input {
+    all: unset;
+    font-size: .9rem;
+    width: 100%;
+    padding: .5rem;
+}
+
+.addCommentForm button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem 1rem;
+    border: none;
+    font-size: 1rem;
+    background-color: #f8efff;
+    border-radius: 5px;
+    cursor: pointer;
+}

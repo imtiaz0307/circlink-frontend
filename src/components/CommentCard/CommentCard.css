@@ -1,0 +1,85 @@
+.commentCard {
+    margin-bottom: 1rem;
+}
+
+.commentAndUserDetails {
+    border-radius: 10px;
+    background-color: #f8efff;
+    padding: 1rem;
+}
+
+.commentTopSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.commentTopSection a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+
+.commentTopSection a img {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.commentTopSection a p {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.commentAndUserDetails .commentContent p {
+    font-size: .9rem;
+    padding: .2rem .5rem .2rem calc(23px + .5rem);
+}
+
+.commentMenuContainer {
+    position: relative;
+}
+
+.commentMenu {
+    position: absolute;
+    background-color: white;
+    top: 100%;
+    right: -5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.226);
+    border-radius: 10px;
+    z-index: 100;
+    width: max-content;
+}
+
+.commentMenu li {
+    padding: 1rem;
+    border-bottom: 1px solid #831de2;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.commentMenu li:nth-child(2) {
+    border-bottom: none;
+}
+
+.likesCountAndLikeButton {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 .5rem 0 calc(30px + 1rem);
+}
+
+.commentLikeButton {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: .2rem;
+    font-size: .9rem;
+    cursor: pointer;
+}
