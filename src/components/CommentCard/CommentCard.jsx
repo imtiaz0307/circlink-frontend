@@ -40,6 +40,21 @@ const CommentCard = ({ postid, commentid, getUserById, currentUser, url }) => {
         }
     }
 
+
+    // like unlike comment handler
+    const likeUnlikeCommentHandler = async () => {
+        await fetch(`${url}/api/posts/${postid}/comments/${commentid}/react`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'auth-token': localStorage.getItem('auth-token')
+            }
+        })
+
+        setCommentLiked(!commentLiked)
+        commentLiked ? setCommentLikesCount(commentLikesCount - 1) : setCommentLikesCount(commentLikesCount + 1)
+    }
+
     useEffect(() => {
         const getComment = async () => {
             const response = await fetch(`${url}/api/posts/${postid}/comments/${commentid}`)
@@ -98,7 +113,7 @@ const CommentCard = ({ postid, commentid, getUserById, currentUser, url }) => {
                         </div>
                         <div className="likesCountAndLikeButton">
                             <p className="likesCount">{commentLikesCount > 0 ? `${commentLikesCount} likes` : ''}</p>
-                            <button className="commentLikeButton">
+                            <button className="commentLikeButton" onClick={likeUnlikeCommentHandler}>
                                 {
                                     commentLiked
                                         ?

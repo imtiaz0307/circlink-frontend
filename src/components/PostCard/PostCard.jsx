@@ -166,8 +166,6 @@ const PostCard = ({ post, isCurrentUser }) => {
                                 <CommentCard
                                     commentid={post.comments[Math.floor(Math.random() * post.comments.length)]}
                                     currentUser={currentUser} url={url} getUserById={getUserById} postid={post._id} />
-
-
                             }
                         </div>
                     </>
