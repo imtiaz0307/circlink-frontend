@@ -60,7 +60,7 @@ const CommentCard = ({ postid, commentid, getUserById, currentUser, url }) => {
             const response = await fetch(`${url}/api/posts/${postid}/comments/${commentid}`)
             const data = await response.json()
             setComment(data)
-            setCommentLikesCount(data.likes)
+            setCommentLikesCount(data.likes.length)
             setEditCommentContent(data.content)
             const comUser = await getUserById(data.userid)
             setCommentUser(comUser)
