@@ -10,6 +10,7 @@ import Profile from './pages/Profile'
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Explore from './pages/Explore'
+import PostPage from './pages/PostPage'
 
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
         <Route path='/signup' element={<Singup />} />
         <Route path='/login' element={<Login />} />
         <Route path='/users/:username' element={<Profile />} />
+        <Route path='/posts/:postid' element={<PostPage />} />
         <Route path='*' element={<span>Something went wrong.</span>} />
       </Routes>
     </div>

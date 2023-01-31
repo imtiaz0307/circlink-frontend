@@ -29,7 +29,7 @@ const AddPost = ({ setAutoRefresher, autoRefresher }) => {
 
                 addPostButton.current.innerText = 'Posting'
 
-                await fetch(`${url}/api/posts/create`, {
+                const response = await fetch(`${url}/api/posts/create`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -37,12 +37,13 @@ const AddPost = ({ setAutoRefresher, autoRefresher }) => {
                     },
                     body: JSON.stringify({ caption: caption.current.value, file: '' })
                 })
+                const data = await response.json()
 
                 setAutoRefresher(autoRefresher + 1)
                 file.current.value = caption.current.value = ''
                 setPreview('')
                 addPostButton.current.innerText = 'Post'
-                navigate(`/users/${currentUser.userName}`)
+                navigate(`/posts/${data.post._id}`)
             } else {
 
                 addPostButton.current.innerText = 'Posting'
@@ -52,7 +53,7 @@ const AddPost = ({ setAutoRefresher, autoRefresher }) => {
                 reader.onloadend = async () => {
                     setPreview(reader.result)
 
-                    await fetch(`${url}/api/posts/create`, {
+                    const response = await fetch(`${url}/api/posts/create`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -60,12 +61,13 @@ const AddPost = ({ setAutoRefresher, autoRefresher }) => {
                         },
                         body: JSON.stringify({ caption: caption.current.value, file: reader.result })
                     })
+                    const data = await response.json()
 
                     setAutoRefresher(autoRefresher + 1)
                     file.current.value = caption.current.value = ''
                     setPreview('')
                     addPostButton.current.innerText = 'Post'
-                    navigate(`/users/${currentUser.userName}`)
+                    navigate(`/posts/${data.post._id}`)
                 }
             }
         }

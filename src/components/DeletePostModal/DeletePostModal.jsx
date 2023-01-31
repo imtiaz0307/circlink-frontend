@@ -1,6 +1,8 @@
+import { useNavigate } from 'react-router-dom'
 import './DeletePostModal.css'
 
 const DeletePostModal = ({ ssdm, postid, url, postCard }) => {
+    const navigate = useNavigate()
     return (
         <div className="dpmw">
             <div className='deletePostModal'>
@@ -17,8 +19,9 @@ const DeletePostModal = ({ ssdm, postid, url, postCard }) => {
                         const data = await response.json()
                         if (data.success) {
                             ssdm(false)
-                            postCard.remove()
+                            postCard?.remove()
                         }
+                        navigate('/')
                     }}>Delete</button>
                     <button onClick={() => ssdm(false)} >Cancel</button>
                 </div>

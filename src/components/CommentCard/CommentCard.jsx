@@ -5,11 +5,9 @@ import { Link } from 'react-router-dom';
 import { BsThreeDots } from 'react-icons/bs';
 import { AiFillLike, AiOutlineDelete, AiOutlineEdit, AiOutlineLike } from 'react-icons/ai';
 import DeleteCommentModal from '../DeleteCommentModal/DeleteCommentModal';
-import { useRef } from 'react';
 import { dateConversion } from '../../Helpers/DateConversion';
 
-const CommentCard = ({ postid, commentid, getUserById, currentUser, url }) => {
-    const commentCard = useRef(null)
+const CommentCard = ({ postid, commentid, getUserById, currentUser, url, scc }) => {
     const [comment, setComment] = useState('')
     const [commentReady, setCommentReady] = useState(false)
     const [commentLikesCount, setCommentLikesCount] = useState(0)
@@ -74,7 +72,7 @@ const CommentCard = ({ postid, commentid, getUserById, currentUser, url }) => {
             {
                 commentReady
                     ?
-                    <div className='commentCard' ref={commentCard} onClick={() => setShowCommentMenu(false)}>
+                    <div className='commentCard' onClick={() => setShowCommentMenu(false)}>
                         <div className="commentAndUserDetails">
                             <div className="commentTopSection">
                                 <Link to={`/users/${commentUser.userName}`}>
@@ -131,7 +129,7 @@ const CommentCard = ({ postid, commentid, getUserById, currentUser, url }) => {
                         {
                             showDeleteModal
                             &&
-                            <DeleteCommentModal ssdm={setShowDeleteModal} postid={postid} commentid={comment._id} url={url} commentCard={commentCard.current} />
+                            <DeleteCommentModal ssdm={setShowDeleteModal} postid={postid} commentid={comment._id} url={url} scc={scc ?? ''} />
                         }
                     </div>
                     :

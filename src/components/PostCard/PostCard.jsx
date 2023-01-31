@@ -91,30 +91,32 @@ const PostCard = ({ post, isCurrentUser }) => {
                         </div>
 
                         <div className="postContent">
-                            {
-                                post.caption.length > 175
-                                    ?
-                                    <p className="postText" style={{
-                                        fontSize: post.file ? '.9rem' : '1.5rem',
-                                        fontWeight: post.file ? '400' : '600',
-                                        padding: '0 .2rem'
-                                    }}>{showFullText ? post.caption : post.caption.slice(0, 175) + '....'} <span onClick={() => setShowFullText(!showFullText)}>{showFullText ? 'show less' : 'read more'}</span></p>
-                                    :
-                                    <p className="postText" style={{
-                                        fontSize: post.file ? '.9rem' : '1.5rem',
-                                        fontWeight: post.file ? '400' : '600',
-                                        padding: '0 .2rem'
-                                    }}>
-                                        {post.caption}
-                                    </p>
-                            }
-                            {
-                                post.file
-                                &&
-                                <div className="postImgContainer">
-                                    <img src={post.file} />
-                                </div>
-                            }
+                            <Link to={`/posts/${post._id}`}>
+                                {
+                                    post.caption.length > 175
+                                        ?
+                                        <p className="postText" style={{
+                                            fontSize: post.file ? '.9rem' : '1.5rem',
+                                            fontWeight: post.file ? '400' : '600',
+                                            padding: '0 .2rem'
+                                        }}>{showFullText ? post.caption : post.caption.slice(0, 175) + '....'} <span onClick={() => setShowFullText(!showFullText)}>{showFullText ? 'show less' : 'read more'}</span></p>
+                                        :
+                                        <p className="postText" style={{
+                                            fontSize: post.file ? '.9rem' : '1.5rem',
+                                            fontWeight: post.file ? '400' : '600',
+                                            padding: '0 .2rem'
+                                        }}>
+                                            {post.caption}
+                                        </p>
+                                }
+                                {
+                                    post.file
+                                    &&
+                                    <div className="postImgContainer">
+                                        <img src={post.file} />
+                                    </div>
+                                }
+                            </Link>
                         </div>
                         <div className="postActions">
                             {
@@ -132,7 +134,7 @@ const PostCard = ({ post, isCurrentUser }) => {
                                         </p>
                                     }
                                     {
-                                        postCommentsCount
+                                        postCommentsCount > 0
                                         &&
                                         <p className="postCommentsCount">
                                             <span>{postCommentsCount} comments</span>

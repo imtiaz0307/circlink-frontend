@@ -2,10 +2,12 @@ import './AddCommentForm.css'
 import { AiOutlineSend } from 'react-icons/ai'
 import { useContext, useRef } from 'react'
 import { AppContext } from '../../AppState/AppContext'
+import { useNavigate } from 'react-router-dom'
 
 const AddCommentForm = ({ pcc, spcc, postid }) => {
     const { url } = useContext(AppContext)
     const comment = useRef(null)
+    const navigate = useNavigate()
 
     const addCommentHandler = async (e) => {
         e.preventDefault()
@@ -23,6 +25,8 @@ const AddCommentForm = ({ pcc, spcc, postid }) => {
         if (data.success) {
             comment.current.value = '';
             spcc(pcc + 1)
+            navigate(`/posts/${[postid]}`)
+
         }
         if (data.error) {
             alert('Something went wrong.')
