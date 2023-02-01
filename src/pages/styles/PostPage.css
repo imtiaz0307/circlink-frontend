@@ -13,6 +13,7 @@
     display: flex;
     height: calc(100vh - 100px);
     max-height: 500px;
+    /* overflow: hidden; */
 }
 
 .postPageLeft {
@@ -66,4 +67,10 @@
 .postPageCaption {
     font-size: 1.1rem;
     padding: 1rem 1rem 1rem calc(40px + .8rem);
+}
+
+.postComments {
+    max-height: 210px;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }

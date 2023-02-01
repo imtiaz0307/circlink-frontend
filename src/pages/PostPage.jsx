@@ -11,6 +11,7 @@ import { FaRegCommentAlt } from 'react-icons/fa'
 import CommentCard from '../components/CommentCard/CommentCard'
 import PostEditModal from '../components/PostEditModal/PostEditModal'
 import DeletePostModal from '../components/DeletePostModal/DeletePostModal'
+import AddCommentForm from '../components/AddCommentForm/AddCommentForm'
 
 const PostPage = () => {
     const { postid } = useParams()
@@ -46,14 +47,15 @@ const PostPage = () => {
             const data = await response.json()
             if (data.error) return alert('No Post Found.')
             setPost(data)
-            setPostComments(data.comments)
+            setPostComments(data.comments.reverse())
+            setPostCommentsCount(data.comments.length)
 
             // getting user
             const userData = await getUserById(data.userid)
             setPostUser(userData)
         }
         getPost()
-    }, [post])
+    }, [])
 
     return (
         <div className='postPage' onClick={() => setShowPostMenu(false)}>
@@ -139,6 +141,7 @@ const PostPage = () => {
                             <button><AiOutlineShareAlt /> <span>Share</span></button>
                         </div>
                     </div>
+                    <AddCommentForm spcc={setPostCommentsCount} pcc={postCommentsCount} postid={post._id} />
                     <div className="postComments">
                         {
                             postComments?.length > 0
